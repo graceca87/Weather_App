@@ -13,37 +13,32 @@
     <title>Weather</title>
     </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light " style= "background: #023e8a" >
         <div class="container-fluid">
-            <span class="navbar-brand">Weather</span>
+            <span class="navbar-brand text-white">Weather</span>
         </div>
     </nav>
 
     <div class="container">
 
-        <h1 class="text-center" id="top-header">Welcome to the Country Population Generator</h1>
+        <h1 class="text-center" id="top-header"></h1>
 
         <div class="row">
-            <div class="col-2"><button>Blue</button></div>
-            <div class="col-2"><button>Gray</button></div>
-            <div class="col-2"><button>Green</button></div>
-            <div class="col-2"><button>Yellow</button></div>
-            <div class="col-2"><button>Red</button></div>
-            <div class="col-2"><button>Teal</button></div>
         </div>
 
-        <div class="row">
-            <form action="" id="countryForm">
+        <div class="d-flex justify-content-center mt-4">
+            <form action="" id="cityForm">
                 <div class="form-group">
-                    <input type="text" name="countryName" id="countryName" class="form-control"
-                        placeholder="Enter Country Name">
-                    <input type="submit" value="Submit" class="btn btn-dark w-100">
+                    <input type="text" name="city" id="city" class="w-100"
+                        placeholder="Enter City">
+                    <input type="submit" value="Submit" class="btn btn-dark w-100" style="background: #0077b6">
                 </div>
             </form>
+            
         </div>
 
-        <div class="row" id="countryDisplay">
-            <!-- Use JS to grab this row and append columns with cards of country info when the user submits the form -->
+        <div class="row mt-4" id="weatherDisplay">
+            <!-- Use JS to grab this row and append columns with cards when the user submits the form -->
         </div>
 
     </div>

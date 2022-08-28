@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <script src="./js/config.js" defer></script>
+    <script src="./js/main.js" defer></script>
+    <title>Weather</title>
+    </head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand">Weather</span>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <h1 class="text-center" id="top-header">Welcome to the Country Population Generator</h1>
+
+        <div class="row">
+            <div class="col-2"><button>Blue</button></div>
+            <div class="col-2"><button>Gray</button></div>
+            <div class="col-2"><button>Green</button></div>
+            <div class="col-2"><button>Yellow</button></div>
+            <div class="col-2"><button>Red</button></div>
+            <div class="col-2"><button>Teal</button></div>
+        </div>
+
+        <div class="row">
+            <form action="" id="countryForm">
+                <div class="form-group">
+                    <input type="text" name="countryName" id="countryName" class="form-control"
+                        placeholder="Enter Country Name">
+                    <input type="submit" value="Submit" class="btn btn-dark w-100">
+                </div>
+            </form>
+        </div>
+
+        <div class="row" id="countryDisplay">
+            <!-- Use JS to grab this row and append columns with cards of country info when the user submits the form -->
+        </div>
+
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

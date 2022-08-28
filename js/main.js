@@ -1,8 +1,6 @@
 // Create a Scope to limit our variables
-
-
 {
-    // set the navbar to dark by replacing the word 'light' with 'dark' in className
+
     let navBar = document.querySelector('nav');
 
 
@@ -10,7 +8,7 @@
     let newHeader = document.createElement('h4');
     newHeader.id = 'myHeader';
     newHeader.className = 'text-center mt-3';
-    newHeader.innerHTML = 'Find the current weather for any location ';
+    newHeader.innerHTML = 'Get the current weather for any city';
     newHeader.style.color = 'black';
 
 
@@ -39,7 +37,6 @@
             elementToChange.style.color = 'black';
         }
     }
-
 
     // Add the handleHeaderEvent function as an event listener on the header
     myHeader.addEventListener('click', handleHeaderEvent)
@@ -78,61 +75,76 @@ async function getWeatherInfo(inputCity){
 
     // Function that will take the city object from the API and build an HTML card for it
 function buildWeatherCard(cityObj){
-
-        // let lat = countryObj.latlng[0]
-        // let lon = countryObj.latlng[1]
-        // let weatherInfo = await getWeatherInfo(lat, lon)
-        // console.log(weatherInfo)
-        // console.log(weatherInfo.main.feels_like)
-        // let inputCity = city
-        // let weatherInfo =  getWeatherInfo(inputCity)
-        // console.log(weatherInfo);
-
         // Create a card div
-
     let card = document.createElement('div');
-    card.className = 'card';
-    console.log(cityObj.main.feels_like)
 
-    // Create a top image
-    let image = document.createElement('img');
-    image.className = 'card-img-top';
-    image.src = `https://www.ksnt.com/wp-content/uploads/sites/86/2016/03/sunshine_36360441_ver1.0-1.jpg?w=500&h=375&crop=1`
-    // Add image as a child to the card div
-    card.append(image);
+    ///////////  Image changes depending on skies ///////////////////
+
+    let skies = cityObj.weather[0].main
+    console.log(skies)
+    
+    if (skies == 'Clouds'){
+        let image = document.createElement('img');
+        image.className = 'card-img-top mt-4';
+        image.src = `/static/images/cloudy.png`
+        // Add image as a child to the card div
+        card.append(image);}
+
+    if (skies == 'Clear'){
+        let image = document.createElement('img');
+        image.className = 'card-img-top';
+        image.src = `/static/images/sunny.png`
+        // Add image as a child to the card div
+        card.append(image);}
+
+    // ///////////////////////   // ///////////////////////
 
     // Create card body
+    
     let cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
+    cardBody.className = 'card-body mb-4';
+    cardBody.style = 'background: #edf6f9'
 
     // Create city name and current temp elements
     let cityName = document.createElement('h5');
-    cityName.className = 'card-title';
+    cityName.className = 'card-title text-center';
+    cityName.style = 'color: #00b4d8;'
     cityName.innerHTML = cityObj.name;
 
+    // define a function to capitalize the first letter of the clouds description
+    function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);}
+
+    // adding cloudy or clear and current temp to card
     let currentTemp = document.createElement('p');
-    currentTemp.className = 'card-text';
-    currentTemp.innerHTML = `The current temperature in ${cityObj.name} is ${cityObj.main.temp} °F`;
+    clouds = cityObj.weather[0].description
+    capitalClouds = capitalizeFirstLetter(clouds)
+    temp = cityObj.main.temp.toFixed(0)
+    currentTemp.className = 'card-text text-center';
+    currentTemp.innerHTML = `${capitalClouds} with a current temp of ${temp} °F`;
 
+    // high temp
     let high = document.createElement('p');
-    high.className = 'card-text';
-    high.innerHTML = `Today has a high of ${cityObj.main.temp_max} °F`;
+    let highTemp = cityObj.main.temp_max.toFixed(0)
+    high.className = 'card-text text-center';
+    high.innerHTML = `Today has a high of ${highTemp} °F`;
 
-
-    let hello = document.createElement('p');
-    hello.className = 'card-text';
-    hello.innerHTML = `It feels like ${cityObj.main.feels_like} °F`;
-
+    // low temp
+    let low = document.createElement('p');
+    low.className = 'card-text text-center';
+    low.innerHTML = `With a low of ${cityObj.main.temp_min.toFixed(0)} °F`;
+    
+    // feels like
     let feels_like = document.createElement('p');
-    low.className = 'card-text';
-    low.innerHTML = `It feels like ${cityObj.main.feels_like} °F`;
+    feels_like.className = 'card-text text-center';
+    feels_like.innerHTML = `It feels like ${cityObj.main.feels_like.toFixed(0)} °F`;
 
 
     // Add cityName and currentTemp to the card body
     cardBody.append(cityName);
     cardBody.append(currentTemp);
     cardBody.append(high);
-    cardBody.append(hello);
+    cardBody.append(low);
     cardBody.append(feels_like);
 
     // Add the card body to the card

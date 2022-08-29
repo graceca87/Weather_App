@@ -87,14 +87,12 @@ function buildWeatherCard(cityObj){
         let image = document.createElement('img');
         image.className = 'card-img-top mt-4';
         image.src = `/static/images/cloudy.png`
-        // Add image as a child to the card div
         card.append(image);}
 
     if (skies == 'Clear'){
         let image = document.createElement('img');
-        image.className = 'card-img-top';
+        image.className = 'card-img-top mt-4';
         image.src = `/static/images/sunny.png`
-        // Add image as a child to the card div
         card.append(image);}
 
     // ///////////////////////   // ///////////////////////
